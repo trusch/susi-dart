@@ -1,0 +1,6 @@
+name: 'susi-dart'
+version: 0.1.0
+description: A SUSI client written in dart.
+dependencies:
+  args:
+  uuid:
