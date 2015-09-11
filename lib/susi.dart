@@ -32,8 +32,8 @@ class Susi {
             onBadCertificate: (X509Certificate c)=>true, 
             context: _context)
         .then((socket) {
+            print('successfully connected to susi-core server');
             this._socket = socket;
-            print('connected');
             socket.transform(UTF8.decoder)
             .transform(new LineSplitter()).listen((String d){
                 var doc = _decoder.convert(d);
@@ -71,7 +71,7 @@ class Susi {
                     this.ack(event);
                 }
             });
-        });
+        }).catchError((err)=>connect());
     }
 
     void ack(event){

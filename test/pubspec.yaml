@@ -1,0 +1,7 @@
+name: 'susi-dart-test'
+version: 0.1.0
+description: A SUSI client written in dart.
+dependencies:
+  susi-dart:
+    git: https://github.com/trusch/susi-dart.git
+  args:
