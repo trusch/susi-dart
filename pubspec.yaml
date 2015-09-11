@@ -1,5 +1,5 @@
 name: 'susi'
-version: 0.1.0
+version: 0.1.1
 description: A SUSI client written in dart.
 author: Tino Rusch <tino.rusch@gmail.com>
 homepage: https://github.com/trusch/susi-dart
