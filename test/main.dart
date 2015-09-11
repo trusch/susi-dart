@@ -1,4 +1,4 @@
-import 'package:susi-dart/susi.dart';
+import 'package:susi/susi.dart';
 import 'package:args/args.dart';
 
 main(List<String> arguments) {
