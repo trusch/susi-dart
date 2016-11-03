@@ -99,7 +99,7 @@ class Susi {
   void ack(event) {
     var process = _processorEventProcesses[event['id']];
     if (process.length == 0) {
-      _socket.write(_encoder.convert({'type': 'ack', 'data': event}));
+      _socket.write(_encoder.convert({'type': 'ack', 'data': event})+'\n');
       _processorEventProcesses.remove(event['id']);
     } else {
       var next = process[0];
@@ -109,7 +109,7 @@ class Susi {
   }
 
   void dismiss(event) {
-    _socket.write(_encoder.convert({'type': 'dismiss', 'data': event}));
+    _socket.write(_encoder.convert({'type': 'dismiss', 'data': event})+'\n');
     _processorEventProcesses.remove(event['id']);
   }
 
@@ -126,7 +126,7 @@ class Susi {
       _socket.write(_encoder.convert({
         'type': 'registerConsumer',
         'data': {'topic': topic}
-      }));
+      })+'\n');
     }
     _consumers[topic] = consumers;
     return id;
@@ -141,7 +141,7 @@ class Susi {
         _socket.write(_encoder.convert({
           'type': 'unregisterConsumer',
           'data': {'topic': pattern}
-        }));
+        })+'\n');
       }
     });
   }
@@ -159,7 +159,7 @@ class Susi {
       _socket.write(_encoder.convert({
         'type': 'registerProcessor',
         'data': {'topic': topic}
-      }));
+      })+'\n');
     }
     _processors[topic] = processors;
     return id;
@@ -174,7 +174,7 @@ class Susi {
         _socket.write(_encoder.convert({
           'type': 'unregisterProcessor',
           'data': {'topic': pattern}
-        }));
+        })+'\n');
       }
     });
   }
@@ -184,7 +184,7 @@ class Susi {
       data['id'] = _uuid.v4();
     }
     _publishCompleters[data['id']] = new Completer();
-    _socket.write(_encoder.convert({'type': 'publish', 'data': data}));
+    _socket.write(_encoder.convert({'type': 'publish', 'data': data})+'\n');
     return _publishCompleters[data['id']].future;
   }
 }
